@@ -1,5 +1,5 @@
-var randomNumber1 = 0;
-var randomNumber2 = 0;
+var randomNumber1 = getRandomNumber();
+var randomNumber2 = getRandomNumber();
 
 window.onload = refreshMe;
 
@@ -8,9 +8,6 @@ function getRandomNumber() {
 }
 
 function refreshMe() {
-  randomNumber1 = getRandomNumber();
-  randomNumber2 = getRandomNumber();
-
   document
     .querySelector(".img1")
     .setAttribute("src", "./images/dice" + randomNumber1 + ".png");
@@ -18,4 +15,12 @@ function refreshMe() {
   document
     .querySelector(".img2")
     .setAttribute("src", "./images/dice" + randomNumber2 + ".png");
+
+  if (randomNumber1 > randomNumber2) {
+    document.querySelector("h1").textContent = "Player1 Wins!";
+  } else if (randomNumber1 < randomNumber2) {
+    document.querySelector("h1").textContent = "Player2 Wins!";
+  } else {
+    document.querySelector("h1").textContent = "Draw!";
+  }
 }
